@@ -1,13 +1,16 @@
 package com.barcodereader.qrcodedetectionusingmobilevisionapi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.barcodereader.BarcodeCaptureActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    void launchBarCodeCaptureActivity() {
+        Intent intent = new Intent(this, BarcodeCaptureActivity.class);
+        intent.putExtra(BarcodeCaptureActivity.AutoFocus, true);
+        intent.putExtra(BarcodeCaptureActivity.UseFlash, false);
+        startActivityForResult(intent, 9001);
     }
 
     @Override
