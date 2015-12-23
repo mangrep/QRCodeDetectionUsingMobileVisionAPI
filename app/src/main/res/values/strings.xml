@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">QRCode Detection Using Mobile Vision API</string>
+    <string name="app_name">Mobile Vision QRCode</string>
     <string name="action_settings">Settings</string>
 
     <string name="ok">OK</string>

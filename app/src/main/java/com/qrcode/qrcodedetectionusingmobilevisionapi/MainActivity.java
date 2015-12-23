@@ -2,17 +2,18 @@ package com.qrcode.qrcodedetectionusingmobilevisionapi;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.qrcode.BarcodeCaptureActivity;
+import com.google.android.gms.vision.barcode.Barcode;
+import com.qrcode.QRCodeCaptureActivity;
 
 public class MainActivity extends AppCompatActivity {
+    private final int QRCODE_ACTIVITY_REQUEST_ID = 9001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,43 +21,37 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        Button button = (Button) findViewById(R.id.scan_qrcode_button);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                launchBarCodeCaptureActivity();
             }
         });
+
     }
 
     void launchBarCodeCaptureActivity() {
-        Intent intent = new Intent(this, BarcodeCaptureActivity.class);
-        intent.putExtra(BarcodeCaptureActivity.AutoFocus, true);
-        intent.putExtra(BarcodeCaptureActivity.UseFlash, false);
-        startActivityForResult(intent, 9001);
+        Intent intent = new Intent(this, QRCodeCaptureActivity.class);
+        intent.putExtra(QRCodeCaptureActivity.AutoFocus, true);
+        intent.putExtra(QRCodeCaptureActivity.UseFlash, false);
+        startActivityForResult(intent, QRCODE_ACTIVITY_REQUEST_ID);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == QRCODE_ACTIVITY_REQUEST_ID) {
+            if (data != null) {
+                Barcode barcode = data.getParcelableExtra("BAR_CODE_OBJECT");
+                TextView textView = (TextView) findViewById(R.id.qrcode);
+                textView.setText("QRCode is " + barcode.rawValue);
+                Toast.makeText(this, "QRCode is " + barcode.rawValue, Toast.LENGTH_LONG);
+            } else {
+                Toast.makeText(this, "Somthing went wrong", Toast.LENGTH_LONG);
+            }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }
