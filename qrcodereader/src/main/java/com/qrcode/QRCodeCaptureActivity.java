@@ -1,4 +1,4 @@
-package com.barcodereader;
+package com.qrcode;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -21,16 +21,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.barcodereader.qrcodedetectionusingmobilevisionapi.R;
-import com.barcodereader.ui.camera.CameraSource;
-import com.barcodereader.ui.camera.CameraSourcePreview;
-import com.barcodereader.ui.camera.GraphicOverlay;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.MultiProcessor;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
+import com.qrcode.reader.R;
+import com.qrcode.ui.camera.CameraSource;
+import com.qrcode.ui.camera.CameraSourcePreview;
+import com.qrcode.ui.camera.GraphicOverlay;
 
 import java.io.IOException;
 
@@ -39,8 +39,8 @@ import java.io.IOException;
  * rear facing camera. During detection overlay graphics are drawn to indicate the position,
  * size, and ID of each barcode.
  */
-public final class BarcodeCaptureActivity extends AppCompatActivity implements BarCodeDetector {
-    private static final String TAG = BarcodeCaptureActivity.class.getName();
+public final class QRCodeCaptureActivity extends AppCompatActivity implements QRCodeDetector {
+    private static final String TAG = QRCodeCaptureActivity.class.getName();
 
     // intent request code to handle updating play services if needed.
     private static final int RC_HANDLE_GMS = 9001;
@@ -54,7 +54,7 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
 
     private CameraSource mCameraSource;
     private CameraSourcePreview mPreview;
-    private GraphicOverlay<BarcodeGraphic> mGraphicOverlay;
+    private GraphicOverlay<QRCodeGraphic> mGraphicOverlay;
 
     /**
      * Initializes the UI and creates the detector pipeline.
@@ -62,10 +62,10 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        setContentView(R.layout.barcode_capture);
+        setContentView(R.layout.qrcode_capture);
 
         mPreview = (CameraSourcePreview) findViewById(R.id.preview);
-        mGraphicOverlay = (GraphicOverlay<BarcodeGraphic>) findViewById(R.id.graphicOverlay);
+        mGraphicOverlay = (GraphicOverlay<QRCodeGraphic>) findViewById(R.id.graphicOverlay);
 
         // read parameters from the intent used to launch the activity.
         boolean autoFocus = getIntent().getBooleanExtra(AutoFocus, false);
@@ -131,7 +131,7 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
         // graphics for each barcode on screen.  The factory is used by the multi-processor to
         // create a separate tracker instance for each barcode.
         BarcodeDetector barcodeDetector = new BarcodeDetector.Builder(context).build();
-        BarcodeTrackerFactory barcodeFactory = new BarcodeTrackerFactory(this, mGraphicOverlay);
+        QRCodeTrackerFactory barcodeFactory = new QRCodeTrackerFactory(this, mGraphicOverlay);
         barcodeDetector.setProcessor(
                 new MultiProcessor.Builder<>(barcodeFactory).build());
 
@@ -254,7 +254,7 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Multitracker sample")
+        builder.setTitle("Alert")
                 .setMessage(R.string.no_camera_permission)
                 .setPositiveButton(R.string.ok, listener)
                 .show();

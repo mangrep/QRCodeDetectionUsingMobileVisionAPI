@@ -1,9 +1,9 @@
-package com.barcodereader;
+package com.qrcode;
 
-import com.barcodereader.ui.camera.GraphicOverlay;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.Tracker;
 import com.google.android.gms.vision.barcode.Barcode;
+import com.qrcode.ui.camera.GraphicOverlay;
 
 /**
  * Generic tracker which is used for tracking or reading a barcode (and can really be used for
@@ -11,11 +11,11 @@ import com.google.android.gms.vision.barcode.Barcode;
  * to an overlay, update the graphics as the item changes, and remove the graphics when the item
  * goes away.
  */
-class BarcodeGraphicTracker extends Tracker<Barcode> {
-    private GraphicOverlay<BarcodeGraphic> mOverlay;
-    private BarcodeGraphic mGraphic;
+class QRCodeGraphicTracker extends Tracker<Barcode> {
+    private GraphicOverlay<QRCodeGraphic> mOverlay;
+    private QRCodeGraphic mGraphic;
 
-    BarcodeGraphicTracker(GraphicOverlay<BarcodeGraphic> overlay, BarcodeGraphic graphic) {
+    QRCodeGraphicTracker(GraphicOverlay<QRCodeGraphic> overlay, QRCodeGraphic graphic) {
         mOverlay = overlay;
         mGraphic = graphic;
     }

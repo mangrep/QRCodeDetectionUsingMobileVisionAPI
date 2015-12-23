@@ -1,28 +1,29 @@
-package com.barcodereader;
+package com.qrcode;
+
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 
-import com.barcodereader.ui.camera.GraphicOverlay;
 import com.google.android.gms.vision.barcode.Barcode;
+import com.qrcode.ui.camera.GraphicOverlay;
 
 /**
  * Graphic instance for rendering barcode position, size, and ID within an associated graphic
  * overlay view.
  */
-public class BarcodeGraphic extends GraphicOverlay.Graphic implements BarCodeDetector {
+public class QRCodeGraphic extends GraphicOverlay.Graphic implements QRCodeDetector {
 
     private int mId;
 
     private Paint mRectPaint;
     private Paint mTextPaint;
     private volatile Barcode mBarcode;
-    private BarCodeDetector callBackBarCode;
+    private QRCodeDetector callBackBarCode;
 
-    BarcodeGraphic(BarCodeDetector barCodeDetector, GraphicOverlay overlay) {
+    QRCodeGraphic(QRCodeDetector qrCodeDetector, GraphicOverlay overlay) {
         super(overlay);
-        callBackBarCode = barCodeDetector;
+        callBackBarCode = qrCodeDetector;
 
         mRectPaint = new Paint();
         mRectPaint.setColor(Color.CYAN);

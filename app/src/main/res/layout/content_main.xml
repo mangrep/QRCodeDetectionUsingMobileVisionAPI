@@ -9,8 +9,24 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.barcodereader.qrcodedetectionusingmobilevisionapi.MainActivity"
+    tools:context="com.qrcode.qrcodedetectionusingmobilevisionapi.MainActivity"
     tools:showIn="@layout/activity_main">
 
 
+    <Button
+        android:id="@+id/scan_qrcode_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="165dp"
+        android:text="Capture QR Code" />
+
+    <TextView
+        android:id="@+id/qrcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="73dp" />
 </RelativeLayout>
