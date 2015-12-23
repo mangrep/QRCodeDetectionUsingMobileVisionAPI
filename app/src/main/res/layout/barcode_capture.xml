@@ -7,16 +7,16 @@
     android:keepScreenOn="true"
     android:orientation="horizontal">
 
-    <com.barcodereader.ui.camera.CameraSourcePreview
+    <com.qrcode.ui.camera.CameraSourcePreview
         android:id="@+id/preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.barcodereader.ui.camera.GraphicOverlay
+        <com.qrcode.ui.camera.GraphicOverlay
             android:id="@+id/graphicOverlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </com.barcodereader.ui.camera.CameraSourcePreview>
+    </com.qrcode.ui.camera.CameraSourcePreview>
 
 </LinearLayout>

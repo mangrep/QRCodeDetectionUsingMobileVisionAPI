@@ -1,4 +1,4 @@
-package com.barcodereader.ui.camera;
+package com.qrcode.ui.camera;
 
 import android.content.Context;
 import android.graphics.Canvas;

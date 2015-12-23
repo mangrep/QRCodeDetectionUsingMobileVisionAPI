@@ -1,4 +1,4 @@
-package com.barcodereader.ui.camera;
+package com.qrcode.ui.camera;
 
 import android.Manifest;
 import android.annotation.SuppressLint;

@@ -1,4 +1,4 @@
-package com.barcodereader.qrcodedetectionusingmobilevisionapi;
+package com.qrcode.qrcodedetectionusingmobilevisionapi;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.barcodereader.BarcodeCaptureActivity;
+import com.qrcode.BarcodeCaptureActivity;
 
 public class MainActivity extends AppCompatActivity {
 

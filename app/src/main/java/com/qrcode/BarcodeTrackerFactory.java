@@ -1,6 +1,6 @@
-package com.barcodereader;
+package com.qrcode;
 
-import com.barcodereader.ui.camera.GraphicOverlay;
+import com.qrcode.ui.camera.GraphicOverlay;
 import com.google.android.gms.vision.MultiProcessor;
 import com.google.android.gms.vision.Tracker;
 import com.google.android.gms.vision.barcode.Barcode;

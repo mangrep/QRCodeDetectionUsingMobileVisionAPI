@@ -1,4 +1,4 @@
-package com.barcodereader;
+package com.qrcode;
 
 import com.google.android.gms.vision.barcode.Barcode;
 

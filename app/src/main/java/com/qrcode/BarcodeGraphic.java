@@ -1,10 +1,10 @@
-package com.barcodereader;
+package com.qrcode;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 
-import com.barcodereader.ui.camera.GraphicOverlay;
+import com.qrcode.ui.camera.GraphicOverlay;
 import com.google.android.gms.vision.barcode.Barcode;
 
 /**

@@ -1,4 +1,4 @@
-package com.barcodereader;
+package com.qrcode;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -21,10 +21,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.barcodereader.qrcodedetectionusingmobilevisionapi.R;
-import com.barcodereader.ui.camera.CameraSource;
-import com.barcodereader.ui.camera.CameraSourcePreview;
-import com.barcodereader.ui.camera.GraphicOverlay;
+import com.qrcode.qrcodedetectionusingmobilevisionapi.R;
+import com.qrcode.ui.camera.CameraSource;
+import com.qrcode.ui.camera.CameraSourcePreview;
+import com.qrcode.ui.camera.GraphicOverlay;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.CommonStatusCodes;
