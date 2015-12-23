@@ -1,4 +1,4 @@
-package com.qrcode.qrcodedetectionusingmobilevisionapi;
+package com.qrcode.reader;
 
 import org.junit.Test;
 
